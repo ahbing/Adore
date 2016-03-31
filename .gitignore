@@ -3,3 +3,6 @@ node_modules/*
 dist/*
 *.log
 .idea/*
+server.js
+npm-debug.log
+
