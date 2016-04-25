@@ -21,7 +21,7 @@ class Home extends React.Component {
   render() {
     return (
       <div>
-        这是 home
+        home
       </div>
     );
   }
