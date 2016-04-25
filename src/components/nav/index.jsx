@@ -1,15 +1,26 @@
 import React from 'react';
-import Tabs from '../../../node_modules/material-ui/lib/tabs/tabs';
-import Tab from '../../../node_modules/material-ui/lib/tabs/tab';
-import FontIcon from '../../../node_modules/material-ui/lib/font-icon';
-import ActionFlightTakeoff from '../../../node_modules/material-ui/lib/svg-icons/action/flight-takeoff';
+import Ripple from '../ripple';
+import styles from './index.scss';
 
-const NavTabs = ()=>(
-  <Tabs>
-    <Tab icon={<FontIcon className="muidocs-icon-action-home" />} />
-    <Tab icon={<ActionFlightTakeoff />} />
-    <Tab icon={<FontIcon className="material-icons">favorite</FontIcon>} />
-  </Tabs>
+import { Link } from 'react-router';
+
+const NavTabs = ({topic,color})=>(
+  <header className={styles.header}>
+    <div className={styles.navBox}>
+      <Link to="/"><img src="https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_150x54dp.png" /></Link>
+      <aside className={styles.navList}>
+        <ul>
+          <li className={styles.curItem}><Link to="/">HOME</Link></li>
+          <li><Link to="music">MUSIC</Link></li>
+          <li><Link to="photo">PHOTO</Link></li>
+          <li><Link to="blog">BLOG</Link></li>
+          <li><Link to="story">STORY</Link></li>
+          <li><Link to="about">ABOUT</Link></li>
+        </ul>
+      </aside>
+    </div>
+    <h1 className={styles.topic}>{topic}</h1>
+  </header>
 );
 
 export default NavTabs;

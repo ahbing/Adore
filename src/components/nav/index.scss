@@ -1,0 +1,59 @@
+@import '../../public/stylesheets/index.scss';
+:local(.header) {
+  $height: 256px;
+  $navHeight: 60px;
+  width: 100%;
+  height: $height;
+  background: $yellow;
+  .navBox{
+    width: 90%;
+    height: $navHeight;
+    margin-left: 5%;
+    > a {
+      display: inline-block;
+      height: $navHeight;
+      padding: 0 4px;
+      line-height: $navHeight;
+      img {
+        vertical-align: middle;
+      }
+    }
+  }
+
+
+  aside {
+    float: right;
+    li {
+      float: left;
+      position: relative;
+      line-height: $navHeight;
+      padding: 0 10px;
+      &:hover {
+          &:after{
+          content: '';
+          position: absolute;
+          height: 2px;
+          width: 100%;
+          background: #000;
+          left: 0;
+          bottom: 0;
+          opacity: .8
+        }
+      }
+    }
+    a {
+      color: #000;
+      font-weight: bolder;
+      font-size: 14px;
+      text-decoration: none;
+    }
+  }
+  .topic{
+    position: relative;
+    color: rgba(0,0,0,0.7);
+    font-weight: 400;
+    font-size: 56px;
+    left: 5%;
+    top: $height/3;
+  }
+}

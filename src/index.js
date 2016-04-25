@@ -1,4 +1,4 @@
-import './../public/stylesheets/index.scss';
+import './public/stylesheets/index.scss';
 
 import ReactDOM from 'react-dom';
 import routes from './routes';

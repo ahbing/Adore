@@ -1,10 +1,9 @@
 import React from 'react';
-
 class About extends React.Component {
   render() {
     return (
-      <p>关于</p>
-    )
+      <div>about</div>
+    );
   }
 }
 export default About;
