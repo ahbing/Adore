@@ -1,7 +1,6 @@
 import AppDispatcher from '../dispatcher/AppDispatcher';
 import ActionTypes from '../constants/ActionTypes';
 
-
 const AdoreAction = {
   getAtricles(){
     AppDispatcher.dispatch({

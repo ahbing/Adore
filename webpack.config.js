@@ -2,13 +2,13 @@ const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
+// const proxy = require('./server/webpack-dev-proxy');
 
 function getEntrySources(sources) {
   if (process.env.NODE_ENV !== 'production') {
     sources.push('webpack-hot-middleware/client?http://localhost:8080');
     sources.push('webpack/hot/dev-server');
   }
-
   return sources;
 }
 
@@ -47,7 +47,13 @@ const plugins = basePlugins
 const localIdentName=  '('+ process.env.NODE_ENV === 'development' ? '[name]__[local]___[hash:base64:5]' : '[hash:base64:5]' +')';
 
 module.exports = {
-  entry: getEntrySources(['./src/index.jsx']),
+  entry: getEntrySources(['./src/index.js']),
+  vendor: [
+    'es5-shim',
+    'es6-shim',
+    'es6-promise',
+    'react',
+  ],
   output: {
     path: path.join(__dirname, 'dist'),
     filename: '[name].[hash].js',
@@ -55,14 +61,19 @@ module.exports = {
     sourceMapFilename: '[name].[hash].js.map',
     chunkFilename: '[id].chunk.js',
   },
+  devServer: {
+    historyApiFallback: { index: '/' },
+    // proxy: proxy(),
+  },
   module: {
-    //preLoaders: [
-    //  { test: /\.js$/, loader: 'source-map-loader' },
-    //  { test: /\.js$/, loader: 'eslint-loader' },
-    //],
+    preLoaders: [
+     { test: /\.js$/, loader: 'source-map-loader' },
+     { test: /\.js$/, loader: 'eslint-loader' },
+    ],
     loaders: [
       { test: /\.scss$/, loader: ExtractTextPlugin.extract('style-loader', 'css-loader?modules&importLoaders=1&localIdentName='+localIdentName+'!sass-loader') },
       //{ test: /\.css$/, loader: ExtractTextPlugin.extract('style-loader', 'css-loader?modules&importLoaders=1&localIdentName='+localIdentName) },
+      { test: /\.json$/, loader: 'json-loader' },
       { test: /\.jsx?$/, loader: 'babel', include: path.join(__dirname, 'src'), exclude: /node_modules/},
       { test: /\.(png|jpg|jpeg|gif|svg)$/, loader: 'url-loader?prefix=img/&limit=5000' },
       { test: /\.(woff|woff2|ttf|eot)$/, loader: 'url-loader?prefix=font/&limit=5000' },

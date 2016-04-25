@@ -20,22 +20,22 @@ const AdoreStore = Object.assign({}, EventEmitter.prototype, {
 
   removeChangeListener: (callback) => {
     this.removeListener(CHANGE_EVENT, callback);
-  }
+  },
 });
 
 AppDispatcher.register((action)=> {
   switch (action.actionType) {
-    case ActionTypes.REQUEST_ARTICAL:
+  case ActionTypes.REQUEST_ARTICAL:
       // do something
       // emit event
-      AdoreStore.emitEvent(/*eventType*/'done');
-      break;
-    case ActionTypes.REQUEST_IMAGES:
+    AdoreStore.emitEvent(/* eventType */'done');
+    break;
+  case ActionTypes.REQUEST_IMAGES:
       // do somethings
       // emit event
-      break;
-    default:
-    // no op
+    break;
+  default:
+      // no op
   }
 });
 

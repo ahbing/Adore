@@ -1,6 +1,6 @@
 import React from 'react';
 import AdoreStore from '../../stores/AdoreStore';
-import NavTabs from  './../nav/nav';
+import NavTabs from  '../nav';
 
 class Home extends React.Component {
   constructor(props) {

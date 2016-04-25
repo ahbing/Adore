@@ -1,6 +1,5 @@
-import './../public/stylesheets/index.scss'
+import './../public/stylesheets/index.scss';
 
-import React from 'react';
 import ReactDOM from 'react-dom';
 import routes from './routes';
 
