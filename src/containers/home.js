@@ -1,27 +1,20 @@
 import React from 'react';
 import AdoreStore from '../stores/AdoreStore';
-// import NavTabs from  '../components/nav';
+import AdoreAction from '../actions/AdoreAction';
+
+// component
+import Rectangle from '../components/rectangle';
 
 class Home extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = AdoreStore.getState();
-    // this._onChange = this._onChange.bind(this);
-  }
-  // componentDidMount() {
-  //   AdoreStore.addChangeListener(this._onChange);
-  // }
-
-  // componentWillUnmount() {
-  //   AdoreStore.removeChangeListener(this._onChange);
-  // }
-
-  // _onChange() {}
 
   render() {
+    const {home} = this.props;
+    let homeList = home.datas.map( (item, index) => {
+      return <Rectangle data={item} key={index} ></Rectangle>
+    });
     return (
       <div>
-        home
+        {homeList}
       </div>
     );
   }

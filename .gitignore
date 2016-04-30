@@ -5,4 +5,5 @@ dist/*
 .idea/*
 server.js
 npm-debug.log
+config.js
 

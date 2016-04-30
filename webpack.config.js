@@ -68,7 +68,7 @@ module.exports = {
   module: {
     preLoaders: [
      { test: /\.js$/, loader: 'source-map-loader' },
-     { test: /\.js$/, loader: 'eslint-loader' },
+     // { test: /\.js$/, loader: 'eslint-loader' },
     ],
     loaders: [
       { test: /\.scss$/, loader: ExtractTextPlugin.extract('style-loader', 'css-loader?modules&importLoaders=1&localIdentName='+localIdentName+'!sass-loader') },
