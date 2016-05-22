@@ -16,14 +16,13 @@ const getGlobalState = () => {
 */
 const getDataBySelectTab = (selectTab, query) => {
   console.log(AdoreStore.shouldGetDate(selectTab));
-  if(AdoreStore.shouldGetDate(selectTab)) {
-    selectTab = selectTab === '/' ? 'home' : selectTab;
-    selectTab = selectTab.replace('/', '');
-    selectTab = selectTab.charAt(0).toUpperCase() + selectTab.slice(1);
-    // action 提供的方法类似 getHome
-    let funName = `get${selectTab}`;
-    AdoreAction[funName](query);
-  }
+  if (!AdoreStore.shouldGetDate(selectTab)) return;
+  selectTab = selectTab === '/' ? 'home' : selectTab;
+  selectTab = selectTab.replace('/', '');
+  selectTab = selectTab.charAt(0).toUpperCase() + selectTab.slice(1);
+  // action 提供的方法类似 getHome
+  let funName = `get${selectTab}`;
+  AdoreAction[funName](query);
 }
 
 class Main extends React.Component {
@@ -34,12 +33,15 @@ class Main extends React.Component {
     this.state = getGlobalState();
   }
 
-  componentDidMount() {
-    AdoreStore.addChangeListener(this._onChange);
+  componentWillMount() {
     const {location} = this.props;
     let tapName = location.pathname;
     AdoreAction.selectTab(tapName);
     getDataBySelectTab(tapName);
+  }
+
+  componentDidMount() {
+    AdoreStore.addChangeListener(this._onChange);
   }
 
   componentWillUnmount() {
@@ -53,6 +55,7 @@ class Main extends React.Component {
     let curPathname = this.props.location.pathname;
     if ( nextPathname === curPathname) return;
     AdoreAction.selectTab(nextPathname);
+    console.log('nextPathname', nextPathname);
     getDataBySelectTab(nextPathname);
   }
 
@@ -65,13 +68,13 @@ class Main extends React.Component {
   }
 
   render() {
-    const {home, photo, navs, currentTab, isFething} = this.state;
+    const {home, photo, about, navs, currentTab, isFetching} = this.state;
     const childrenWithProps = React.Children.map(this.props.children,
-      (child) => React.cloneElement(child, {home: home, photo:photo}));
+      (child) => React.cloneElement(child, {home: home, photo:photo, about:about}));
     return (
       <div onClick={this._onClick}>
-        <NavTabs currentTab={currentTab} navs={navs}/>
-        { isFething && <Loading/>}
+        <NavTabs currentTab={currentTab} navs={navs} />
+        { isFetching && <Loading/>}
         <div>{childrenWithProps}</div>
       </div>
     );

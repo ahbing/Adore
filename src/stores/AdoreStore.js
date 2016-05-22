@@ -5,10 +5,10 @@ import {EventEmitter} from 'events';
 // 这里可以定义 一些操作数据的方法 curd 之
 let _data = {
   navs: [
-    {nav: 'story'},
-    {nav: 'music'},
+    // {nav: 'story'},
+    // {nav: 'music'},
     {nav: 'photo'},
-    {nav: 'blog'},
+    // {nav: 'blog'},
     {nav: 'about'}
   ],
   isFetching: false,
@@ -20,8 +20,26 @@ let _data = {
   photo: {
     title: 'photo',
     datas: []
-  }
+  },
 
+  music: {
+    title: 'music',
+    datas: []
+  },
+  story: {
+    title: 'story',
+    datas: []
+  },
+
+  about: {
+    title: 'about',
+    datas: []
+  },
+
+  blog: {
+    title: 'blog',
+    datas: []
+  }
 };
 
 const CHANGE_EVENT = 'change';
@@ -45,7 +63,10 @@ const AdoreStore = Object.assign({}, EventEmitter.prototype, {
     if (datas && datas.length) {
       return false;
     }
-    return !_data['isFetching'];
+    if (_data['isFetching']) {
+      return false;
+    }
+    return true;
   },
   emitEvent: () => {
     AdoreStore.emit(CHANGE_EVENT);
@@ -62,6 +83,10 @@ AppDispatcher.register((action)=> {
   switch (action.actionType) {
     case ActionTypes.REQUEST_HOME:
     case ActionTypes.REQUEST_PHOTO:
+    case ActionTypes.REQUEST_MUSIC:
+    case ActionTypes.REQUEST_ABOUT:
+    case ActionTypes.REQUEST_STORY:
+    case ActionTypes.REQUEST_BLOG:
       console.log('this _data ===', _data);
       _data['isFetching'] = true;
       AdoreStore.emitEvent();
@@ -74,6 +99,31 @@ AppDispatcher.register((action)=> {
     case ActionTypes.RECEIVE_PHOTO:
       _data['isFetching'] = false;
       _data['photo']['datas'].push(action.data);
+      AdoreStore.emitEvent();
+      break;
+
+    case ActionTypes.RECEIVE_STORY:
+      _data['isFetching'] = false;
+      _data['photo']['datas'].push(action.data);
+      AdoreStore.emitEvent();
+      break;
+
+    case ActionTypes.RECEIVE_MUSIC:
+      _data['isFetching'] = false;
+      _data['photo']['datas'].push(action.data);
+      AdoreStore.emitEvent();
+      break;
+
+    case ActionTypes.RECEIVE_BLOG:
+      _data['isFetching'] = false;
+      _data['photo']['datas'].push(action.data);
+      AdoreStore.emitEvent();
+      break;
+
+    case ActionTypes.RECEIVE_ABOUT:
+      console.log('action.data', action.data);
+      _data['isFetching'] = false;
+      _data['about']['datas'].push(action.data);
       AdoreStore.emitEvent();
       break;
     case ActionTypes.SELECT_TAB:

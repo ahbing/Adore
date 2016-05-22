@@ -11,14 +11,17 @@ const photoData = [
   {imgSrc: 'https://drscdn.500px.org/photo/21086277/q%3D80_m%3D1000/3aebfeca27cc55b7e130eff707dd113d', title:'hello flux', describe:'迷人的花香是我对你的倾慕', time: Date.now()},
 
   {imgSrc: 'https://drscdn.500px.org/photo/20852455/q%3D80_m%3D1000/418313ebb3720af222d67d75c32e2a2f', title:'fuck flux',  describe:'你走吧，你笑吧，你找寻你自己吧', time: Date.now()},
-]
+];
+
+const aboutData = [
+  {content: 'saysomething I giving upon you', time: Date.now()}
+];
 
 // api 的 curd
 const AdoreAction = {
   getHome(query) {
     AppDispatcher.dispatch({actionType: ActionTypes.REQUEST_HOME});
     // fetch data by query
-    console.log(' start request home');
     setTimeout(function(){
       AppDispatcher.dispatch({actionType: ActionTypes.RECEIVE_HOME, data:homeData[0]});
     }, 2000)
@@ -27,42 +30,37 @@ const AdoreAction = {
   getPhoto(query) {
     AppDispatcher.dispatch({actionType: ActionTypes.REQUEST_PHOTO});
         // fetch data by query
-    console.log(' start request photo');
     setTimeout(function(){
       AppDispatcher.dispatch({actionType: ActionTypes.RECEIVE_PHOTO, data:photoData[0]});
     }, 2000)
   },
   getStory(query) {
-    AppDispatcher.dispatch({actionType: ActionTypes.REQUEST_PHOTO});
+    AppDispatcher.dispatch({actionType: ActionTypes.REQUEST_STORY});
         // fetch data by query
-    console.log(' start request photo');
     setTimeout(function(){
-      AppDispatcher.dispatch({actionType: ActionTypes.RECEIVE_PHOTO, data:photoData[0]});
+      AppDispatcher.dispatch({actionType: ActionTypes.RECEIVE_STORY, data:photoData[0]});
     }, 2000)
   },
   getMusic(query) {
-    AppDispatcher.dispatch({actionType: ActionTypes.REQUEST_PHOTO});
+    AppDispatcher.dispatch({actionType: ActionTypes.REQUEST_MUSIC});
         // fetch data by query
-    console.log(' start request photo');
     setTimeout(function(){
-      AppDispatcher.dispatch({actionType: ActionTypes.RECEIVE_PHOTO, data:photoData[0]});
+      AppDispatcher.dispatch({actionType: ActionTypes.RECEIVE_MUSIC, data:photoData[0]});
     }, 2000)
   },
 
   getBlog(query) {
-    AppDispatcher.dispatch({actionType: ActionTypes.REQUEST_PHOTO});
+    AppDispatcher.dispatch({actionType: ActionTypes.REQUEST_BLOG});
         // fetch data by query
-    console.log(' start request photo');
     setTimeout(function(){
-      AppDispatcher.dispatch({actionType: ActionTypes.RECEIVE_PHOTO, data:photoData[0]});
+      AppDispatcher.dispatch({actionType: ActionTypes.RECEIVE_BLOG, data:photoData[0]});
     }, 2000)
   },
   getAbout(query) {
-    AppDispatcher.dispatch({actionType: ActionTypes.REQUEST_PHOTO});
-        // fetch data by query
-    console.log(' start request photo');
+    AppDispatcher.dispatch({actionType: ActionTypes.REQUEST_ABOUT});
+        // fetch data by query\
     setTimeout(function(){
-      AppDispatcher.dispatch({actionType: ActionTypes.RECEIVE_PHOTO, data:photoData[0]});
+      AppDispatcher.dispatch({actionType: ActionTypes.RECEIVE_ABOUT, data:aboutData[0]});
     }, 2000)
   },
 

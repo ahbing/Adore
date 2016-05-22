@@ -1,12 +1,6 @@
 import React from 'react';
-import AdoreStore from '../stores/AdoreStore';
-import AdoreAction from '../actions/AdoreAction';
 
 import Image from '../components/Image';
-
-const getPhotoDate = () => {
-  return AdoreStore.getAllData('photo')
-}
 
 class Photo extends React.Component {
   render() {
@@ -21,4 +15,5 @@ class Photo extends React.Component {
     );
   }
 }
+
 export default Photo;
