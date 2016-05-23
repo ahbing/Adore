@@ -30,12 +30,10 @@ let _data = {
     title: 'story',
     datas: []
   },
-
   about: {
     title: 'about',
     datas: []
   },
-
   blog: {
     title: 'blog',
     datas: []
@@ -87,7 +85,6 @@ AppDispatcher.register((action)=> {
     case ActionTypes.REQUEST_ABOUT:
     case ActionTypes.REQUEST_STORY:
     case ActionTypes.REQUEST_BLOG:
-      console.log('this _data ===', _data);
       _data['isFetching'] = true;
       AdoreStore.emitEvent();
       break;

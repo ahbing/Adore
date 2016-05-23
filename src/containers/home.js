@@ -6,7 +6,6 @@ import AdoreAction from '../actions/AdoreAction';
 import Rectangle from '../components/rectangle';
 
 class Home extends React.Component {
-
   render() {
     const {home} = this.props;
     let homeList = home.datas.map( (item, index) => {

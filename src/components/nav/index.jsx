@@ -11,7 +11,7 @@ const NavTabs = ({navs, currentTab}) => {
 
   return (
     <header className={styles.header} ref={ (c) => {
-          console.log('ccccccc ======',c);
+          // console.log('ccccccc ======',c);
         }}>
       <div className={styles.navBox}>
         <Link to={'/'}><img src="https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_150x54dp.png" /></Link>

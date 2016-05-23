@@ -19,6 +19,7 @@ const getDataBySelectTab = (selectTab, query) => {
   if (!AdoreStore.shouldGetDate(selectTab)) return;
   selectTab = selectTab === '/' ? 'home' : selectTab;
   selectTab = selectTab.replace('/', '');
+  // 首字母大写
   selectTab = selectTab.charAt(0).toUpperCase() + selectTab.slice(1);
   // action 提供的方法类似 getHome
   let funName = `get${selectTab}`;
@@ -51,7 +52,6 @@ class Main extends React.Component {
   componentWillReceiveProps(nextProp) {
     const {location} = nextProp;
     let nextPathname = location.pathname;
-    //  nextPathname = 'photo' ** BUT ** curPathname = '/photo'
     let curPathname = this.props.location.pathname;
     if ( nextPathname === curPathname) return;
     AdoreAction.selectTab(nextPathname);

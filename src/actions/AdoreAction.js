@@ -17,6 +17,10 @@ const aboutData = [
   {content: 'saysomething I giving upon you', time: Date.now()}
 ];
 
+const api = ' https://api.flickr.com/services/rest/?method=flickr.people.getPhotos&api_key=5d6a54435c9da0c091e94cf2232e94eb&user_id=142832811%40N05&format=json&nojsoncallback=1&auth_token=72157668680714806-169f97baafdede88&api_sig=fce46b16375a7ef5ff3d9049f7ab0fc5'
+
+
+
 // api 的 curd
 const AdoreAction = {
   getHome(query) {
@@ -30,9 +34,24 @@ const AdoreAction = {
   getPhoto(query) {
     AppDispatcher.dispatch({actionType: ActionTypes.REQUEST_PHOTO});
         // fetch data by query
-    setTimeout(function(){
-      AppDispatcher.dispatch({actionType: ActionTypes.RECEIVE_PHOTO, data:photoData[0]});
-    }, 2000)
+    fetch(api).then((response)=>{
+      return response.json()
+    }).then((json)=>{
+      console.log(json.photos.photo)
+      let photos = json.photos.photo;
+
+      photos.forEach((item)=>{
+        console.log(item.id);
+        fetch(`https://api.flickr.com/services/rest/?method=flickr.photos.getSizes&api_key=5d6a54435c9da0c091e94cf2232e94eb&photo_id=${item.id}&format=json&nojsoncallback=1&auth_token=72157668680714806-169f97baafdede88&api_sig=778f734df53aa1c9c0f828df88816b50`).then((r)=>{
+          return r.json()
+        }).then((d)=>{
+          console.log('dddd', d);
+          console.log(d.sizes.size[9].source)
+          let url = d.sizes.size[9].source;
+          AppDispatcher.dispatch({actionType: ActionTypes.RECEIVE_PHOTO, data: {imgSrc:url}});
+        })
+      })
+    })
   },
   getStory(query) {
     AppDispatcher.dispatch({actionType: ActionTypes.REQUEST_STORY});
