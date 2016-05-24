@@ -6,4 +6,6 @@ dist/*
 server.js
 npm-debug.log
 config.js
+src/api/config.js
+
 
