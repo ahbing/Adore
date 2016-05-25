@@ -2,9 +2,11 @@
 :local(.header) {
   $height: 256px;
   $navHeight: 60px;
+  position: relative;
   width: 100%;
   height: $height;
   background: $yellow;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, .3);
   .navBox{
     width: 90%;
     height: $navHeight;
@@ -51,12 +53,17 @@
       }
     }
   }
+  .ahbing{
+    font-size: 3rem;
+    color: rgba(0,0,0,0.7);
+    text-decoration: none;
+  }
   .topic{
-    position: relative;
+    position: absolute;
     color: rgba(0,0,0,0.7);
     font-weight: 400;
     font-size: 56px;
     left: 5%;
-    top: $height/3;
+    top: $height/2;
   }
 }

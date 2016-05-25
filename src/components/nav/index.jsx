@@ -14,7 +14,7 @@ const NavTabs = ({navs, currentTab}) => {
           // console.log('ccccccc ======',c);
         }}>
       <div className={styles.navBox}>
-        <Link to={'/'}><img src="https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_150x54dp.png" /></Link>
+        <Link className={styles.ahbing} to={'/'}>AHBING</Link>
         <aside className={styles.navList}>
           <ul>
             {navList}

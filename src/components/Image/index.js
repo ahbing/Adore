@@ -1,10 +1,11 @@
 import React from 'react';
+import styles from './index.scss';
 
 function Image({photo}) {
   return (
-    <div>
+    <div className={styles.img_item}>
       <img src={photo.imgSrc}/>
-      <p>{photo.describe}</p>
+      <p>{photo.title}</p>
     </div>
   )
 }
