@@ -6,7 +6,7 @@ class Photo extends React.Component {
   render() {
     const {photo} = this.props;
     const photoList = photo.datas.map( (photo, index) => {
-      return <Image photo = {photo} key = {index}></Image>
+      return <Image photo={photo} key = {index}></Image>
     })
     return (
       <div>

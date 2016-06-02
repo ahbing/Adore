@@ -1,0 +1,26 @@
+
+:local(.hidden) {
+  display: none;
+}
+
+:local(.footer) {
+  width: 100%;
+  height: 60px;
+}
+:local(.footerLine){
+  margin: 0 auto;
+  width: 80%;
+  line-height: 60px;
+  a {
+    color: #000;
+    text-decoration: none;
+  }
+}
+
+:local(.left) {
+  float: left;
+}
+
+:local(.right) {
+  float: right;
+}

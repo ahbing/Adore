@@ -13,12 +13,13 @@ const aboutData = [
 ];
 
 const AdoreAction = {
+
   getHome(query) {
     AppDispatcher.dispatch({actionType: ActionTypes.REQUEST_HOME});
     // fetch data by query
     setTimeout(function(){
       AppDispatcher.dispatch({actionType: ActionTypes.RECEIVE_HOME, data:homeData[0]});
-    }, 2000)
+    }, 200)
   },
 
   getPhoto(query) {
@@ -68,6 +69,7 @@ const AdoreAction = {
       AppDispatcher.dispatch({actionType: ActionTypes.RECEIVE_BLOG, data:photoData[0]});
     }, 2000)
   },
+
   getAbout(query) {
     AppDispatcher.dispatch({actionType: ActionTypes.REQUEST_ABOUT});
         // fetch data by query\

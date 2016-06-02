@@ -5,6 +5,8 @@ import AdoreAction from '../actions/AdoreAction';
 // component
 import NavTabs from  '../components/nav';
 import Loading from '../components/loading';
+import Footer from '../components/footer';
+
 const getGlobalState = () => {
   return AdoreStore.getAllData();
 }
@@ -15,7 +17,6 @@ const getGlobalState = () => {
   @params {Object} 进行查询的 query
 */
 const getDataBySelectTab = (selectTab, query) => {
-  console.log(AdoreStore.shouldGetDate(selectTab));
   if (!AdoreStore.shouldGetDate(selectTab)) return;
   selectTab = selectTab === '/' ? 'home' : selectTab;
   selectTab = selectTab.replace('/', '');
@@ -55,7 +56,6 @@ class Main extends React.Component {
     let curPathname = this.props.location.pathname;
     if ( nextPathname === curPathname) return;
     AdoreAction.selectTab(nextPathname);
-    console.log('nextPathname', nextPathname);
     getDataBySelectTab(nextPathname);
   }
 
@@ -69,13 +69,15 @@ class Main extends React.Component {
 
   render() {
     const {home, photo, about, navs, currentTab, isFetching} = this.state;
+    let propObj = this.state;
     const childrenWithProps = React.Children.map(this.props.children,
-      (child) => React.cloneElement(child, {home: home, photo:photo, about:about}));
+      (child) => React.cloneElement(child, propObj));
     return (
       <div onClick={this._onClick}>
         <NavTabs currentTab={currentTab} navs={navs} />
         { isFetching && <Loading/>}
         <div>{childrenWithProps}</div>
+        <Footer isFetching={isFetching} />
       </div>
     );
   }

@@ -1,46 +1,27 @@
 @import '../../public/stylesheets/index.scss';
-:local(.rectangle){
-  $titleHeight: 60px;
-  width: 90%;
+$titleHeight: 60px;
+$minImgHeight: 520px;
+:local(.rectangle) {
+  width: 80%;
   margin: 2px auto;
   position: relative;
-  img{
-    width: 100%;
-  }
-  .title{
-    position: absolute;
-    width: 98%;
-    height: $titleHeight;
-    top: 0;
-    left: 0;
-    background-color: rgba(0, 0, 0, .4);
-    color: rgb(255, 255, 255);
-    line-height: $titleHeight;
-    font-size: 1.6rem;
-    padding-left: 2%;
-  }
+  min-height: $minImgHeight
 }
 
-:local(.ripple) {
-  overflow: hidden;
-}
-
-:local(.effect) {
+:local(.title) {
   position: absolute;
-  border-radius: 50%;
-  width: 50px;
-  height: 50px;
-  background: #fff;
-  animation: ripple-animation 2s;
+  width: 98%;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, .4);
+  color: rgb(255, 255, 255);
+  line-height: $titleHeight;
+  font-size: 1.6rem;
+  padding-left: 2%;
 }
 
-@keyframes ripple-animation {
-  from {
-    transform: scale(1);
-    opacity: 0.4;
-  }
-  to {
-    transform: scale(100);
-    opacity: 1;
-  }
+:local(.img) {
+  width: 100%;
 }
+
+:local(.fadein) {}

@@ -21,7 +21,6 @@ let _data = {
     title: 'photo',
     datas: []
   },
-
   music: {
     title: 'music',
     datas: []
@@ -118,7 +117,6 @@ AppDispatcher.register((action)=> {
       break;
 
     case ActionTypes.RECEIVE_ABOUT:
-      console.log('action.data', action.data);
       _data['isFetching'] = false;
       _data['about']['datas'].push(action.data);
       AdoreStore.emitEvent();
