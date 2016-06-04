@@ -12,9 +12,10 @@ $fontColor: rgba(255,255,255,1);
 }
 
 :local(.ahbing) {
-  font-size: 3rem;
+  font-size: 2rem;
   color: $fontColor;
   text-decoration: none;
+  opacity: 0;
   transition:all .8s ease;
 }
 
@@ -22,10 +23,9 @@ $fontColor: rgba(255,255,255,1);
   position: absolute;
   opacity: 1;
   color: $fontColor;
-  font-weight: 400;
-  font-size: 56px;
+  font-size: 3rem;
   left: 5%;
-  top: $height/2;
+  top: $height/100*65;
   transition:all .4s ease;
 }
 :local(.navBox) {
@@ -47,17 +47,16 @@ $fontColor: rgba(255,255,255,1);
 }
 :local(.navList) {
   float: right;
-  li {
+  li{
     float: left;
     position: relative;
     line-height: $navHeight;
     padding: 0 10px;
-
+    letter-spacing: 2px;
   }
   a {
     display: inline-block;
     color: $fontColor;
-    font-weight: bolder;
     font-size: 14px;
     text-decoration: none;
     text-align: center;
@@ -65,7 +64,7 @@ $fontColor: rgba(255,255,255,1);
       &:after{
       content: '';
       position: absolute;
-      height: 2px;
+      height: 1px;
       width: 100%;
       background: $fontColor;
       left: 0;
@@ -74,16 +73,31 @@ $fontColor: rgba(255,255,255,1);
       }
     }
   }
+  .currentLi {
+    a {
+      &:after{
+        content: '';
+        position: absolute;
+        height: 1px;
+        width: 100%;
+        background: $fontColor;
+        left: 0;
+        bottom: 0;
+        opacity: .8
+      }
+    }
+  }
 }
 
 :local(.fix_navBox) {
   position: fixed;
   z-index: 2333;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, .3);
 }
 :local(.fix_topic) {
   opacity: 0;
   transform: translateY(-20px);
 }
 :local(.fix_ahbing) {
-  font-size: 22px;
+  opacity: 1;
 }

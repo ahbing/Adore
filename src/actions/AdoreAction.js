@@ -18,7 +18,7 @@ const AdoreAction = {
     AppDispatcher.dispatch({actionType: ActionTypes.REQUEST_HOME});
     // fetch data by query
     setTimeout(function(){
-      AppDispatcher.dispatch({actionType: ActionTypes.RECEIVE_HOME, data:homeData[0]});
+      AppDispatcher.dispatch({actionType: ActionTypes.RECEIVE_HOME, data:homeData});
     }, 200)
   },
 

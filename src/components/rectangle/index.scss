@@ -5,19 +5,22 @@ $minImgHeight: 520px;
   width: 80%;
   margin: 2px auto;
   position: relative;
-  min-height: $minImgHeight
+  min-height: $minImgHeight;
 }
 
 :local(.title) {
+  box-sizing: border-box;
+  width: 100%;
   position: absolute;
-  width: 98%;
-  top: 0;
   left: 0;
+  bottom: 0;
   background-color: rgba(0, 0, 0, .4);
   color: rgb(255, 255, 255);
   line-height: $titleHeight;
   font-size: 1.6rem;
-  padding-left: 2%;
+  padding-left: 2rem;
+  opacity: 0;
+  transition: all .8 ease;
 }
 
 :local(.img) {

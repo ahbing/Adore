@@ -74,7 +74,7 @@ class Main extends React.Component {
       (child) => React.cloneElement(child, propObj));
     return (
       <div onClick={this._onClick}>
-        <NavTabs currentTab={currentTab} navs={navs} />
+        <NavTabs {...this.state}/>
         { isFetching && <Loading/>}
         <div>{childrenWithProps}</div>
         <Footer isFetching={isFetching} />

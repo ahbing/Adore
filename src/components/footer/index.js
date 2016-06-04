@@ -15,7 +15,7 @@ const Footer = ({isFetching}) => {
     <footer className={footerClassName}>
       <p className={styles.footerLine}>
         <span className={styles.left}>迷人的花香是我对你的倾慕 &copy; {year}</span>
-        <span className={styles.right}><a href="http://huangbingbing.com">Ahbing</a> • <a href="https://github.com/ahbing/adore">倾慕</a></span>
+        <span className={styles.right}><a target="_blank" href="http://huangbingbing.com">Ahbing</a> • <a target="_blank" href="https://github.com/ahbing/adore">倾慕</a></span>
       </p>
     </footer>
   )

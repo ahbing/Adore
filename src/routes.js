@@ -13,6 +13,7 @@ export default (
   <Router history={browserHistory}>
     <Route path="/" component={Main}>
       <IndexRoute component={Home} />
+      <Route path="home" component={Home}/>
       <Route path="music" component={Music}/>
       <Route path="blog" component={Blog}/>
       <Route path="story" component={Story}/>

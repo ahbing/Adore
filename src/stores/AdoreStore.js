@@ -7,6 +7,7 @@ let _data = {
   navs: [
     // {nav: 'story'},
     // {nav: 'music'},
+    {nav: 'home'},
     {nav: 'photo'},
     // {nav: 'blog'},
     {nav: 'about'}
@@ -15,10 +16,12 @@ let _data = {
   currentTab: 'home',
   home: {
     title: 'home',
+    subTitle: 'Hello Stranger!',
     datas: []
   },
   photo: {
     title: 'photo',
+    subTitle: 'envisions are different',
     datas: []
   },
   music: {
@@ -89,7 +92,7 @@ AppDispatcher.register((action)=> {
       break;
     case ActionTypes.RECEIVE_HOME:
       _data['isFetching'] = false;
-      _data['home']['datas'].push(action.data);
+      _data['home']['datas'] = action.data;
       AdoreStore.emitEvent();
       break;
     case ActionTypes.RECEIVE_PHOTO:

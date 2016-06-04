@@ -40,9 +40,7 @@ class NavTabs extends React.Component {
   render() {
     const {navs, currentTab} = this.props;
     const {shouldFixHeader} = this.state;
-    const navList = navs.map( (item, index) => {
-      return (<li key={index}><Link to={item.nav}>{item.nav.toUpperCase()}</Link></li>)
-    })
+
     let headerClassName = cx({
       header: true,
       fix_header: shouldFixHeader
@@ -60,6 +58,13 @@ class NavTabs extends React.Component {
       ahbing: true,
       fix_ahbing: shouldFixHeader
     })
+    const navList = navs.map( (item, index) => {
+      let curLiClassName = cx({
+        currentLi: item.nav == currentTab
+      })
+      return (<li key={index} className={curLiClassName}><Link to={item.nav}>{item.nav.toUpperCase()}</Link></li>)
+    });
+    let subTitle = this.props[currentTab].subTitle;
     return (
       <header className={headerClassName} ref={ (c) => {
             // console.log('ccccccc ======',c);
@@ -72,7 +77,7 @@ class NavTabs extends React.Component {
             </ul>
           </aside>
         </div>
-        <h1 className={topicClassName}>{currentTab}</h1>
+        <h1 className={topicClassName}>{subTitle}</h1>
       </header>
     );
   }
