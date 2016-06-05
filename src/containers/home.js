@@ -7,11 +7,9 @@ import Rectangle from '../components/rectangle';
 
 class Home extends React.Component {
   render() {
-    // @todo 根据 home data length 来确定 index， 根据 index 来请求下一个 数据
-    // 实现懒加载
-    const {home} = this.props;
+    const {home, isFetching} = this.props;
     let homeList = home.datas.map( (item, index) => {
-      return <Rectangle  data={item} key={index} ></Rectangle>
+      return <Rectangle data={item} key={index} ></Rectangle>
     });
     return (
       <div>

@@ -7,7 +7,6 @@ let cx = classNames.bind(styles);
 
 class NavTabs extends React.Component {
   constructor(props) {
-    console.log('props in nav', props);
     super(props);
     this.state = {
       shouldFixHeader: false
@@ -24,16 +23,14 @@ class NavTabs extends React.Component {
 
   _onWindowScroll() {
     const body = document.body;
-    if (body.offsetWidth > 1024) {
-      if (body.scrollTop > 0) {
-        this.setState({
-          shouldFixHeader: true
-        })
-      } else {
-        this.setState({
-          shouldFixHeader: false
-        })
-      }
+    if (body.scrollTop > 0) {
+      this.setState({
+        shouldFixHeader: true
+      })
+    } else {
+      this.setState({
+        shouldFixHeader: false
+      })
     }
   }
 
@@ -58,12 +55,17 @@ class NavTabs extends React.Component {
       ahbing: true,
       fix_ahbing: shouldFixHeader
     })
-    const navList = navs.map( (item, index) => {
+
+    const navList = navs.map((item, index) => {
       let curLiClassName = cx({
         currentLi: item.nav == currentTab
       })
+      if (item.out) {
+        return (<li className={curLiClassName} key={index} ><a target="_blank" href={item.out}>{item.nav.toUpperCase()}</a></li>)
+      }
       return (<li key={index} className={curLiClassName}><Link to={item.nav}>{item.nav.toUpperCase()}</Link></li>)
-    });
+    })
+
     let subTitle = this.props[currentTab].subTitle;
     return (
       <header className={headerClassName} ref={ (c) => {

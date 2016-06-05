@@ -1,4 +1,4 @@
-
+@import "../../public/stylesheets/index.scss";
 :local(.hidden) {
   display: none;
 }
@@ -6,6 +6,7 @@
 :local(.footer) {
   width: 100%;
   height: 60px;
+  animation: moveToTop 1.8s ease;
 }
 :local(.footerLine){
   margin: 0 auto;

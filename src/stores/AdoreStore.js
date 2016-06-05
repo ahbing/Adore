@@ -2,42 +2,29 @@ import AppDispatcher from '../dispatcher/AppDispatcher';
 import ActionTypes from '../constants/ActionTypes';
 import {EventEmitter} from 'events';
 
-// 这里可以定义 一些操作数据的方法 curd 之
 let _data = {
   navs: [
-    // {nav: 'story'},
-    // {nav: 'music'},
     {nav: 'home'},
     {nav: 'photo'},
-    // {nav: 'blog'},
+    {nav: 'blog', out: 'http://huangbingbing.com'},
     {nav: 'about'}
   ],
   isFetching: false,
   currentTab: 'home',
   home: {
     title: 'home',
-    subTitle: 'Hello Stranger!',
+    subTitle: 'hello stranger!',
     datas: []
   },
   photo: {
     title: 'photo',
     subTitle: 'envisions are different',
-    datas: []
-  },
-  music: {
-    title: 'music',
-    datas: []
-  },
-  story: {
-    title: 'story',
+    moreLink: 'https://500px.com/givemearainbowlife',
     datas: []
   },
   about: {
     title: 'about',
-    datas: []
-  },
-  blog: {
-    title: 'blog',
+    subTitle: 'envisions are different',
     datas: []
   }
 };
@@ -83,10 +70,7 @@ AppDispatcher.register((action)=> {
   switch (action.actionType) {
     case ActionTypes.REQUEST_HOME:
     case ActionTypes.REQUEST_PHOTO:
-    case ActionTypes.REQUEST_MUSIC:
     case ActionTypes.REQUEST_ABOUT:
-    case ActionTypes.REQUEST_STORY:
-    case ActionTypes.REQUEST_BLOG:
       _data['isFetching'] = true;
       AdoreStore.emitEvent();
       break;
@@ -100,25 +84,6 @@ AppDispatcher.register((action)=> {
       _data['photo']['datas'].push(action.data);
       AdoreStore.emitEvent();
       break;
-
-    case ActionTypes.RECEIVE_STORY:
-      _data['isFetching'] = false;
-      _data['photo']['datas'].push(action.data);
-      AdoreStore.emitEvent();
-      break;
-
-    case ActionTypes.RECEIVE_MUSIC:
-      _data['isFetching'] = false;
-      _data['photo']['datas'].push(action.data);
-      AdoreStore.emitEvent();
-      break;
-
-    case ActionTypes.RECEIVE_BLOG:
-      _data['isFetching'] = false;
-      _data['photo']['datas'].push(action.data);
-      AdoreStore.emitEvent();
-      break;
-
     case ActionTypes.RECEIVE_ABOUT:
       _data['isFetching'] = false;
       _data['about']['datas'].push(action.data);

@@ -6,6 +6,7 @@ import AdoreAction from '../actions/AdoreAction';
 import NavTabs from  '../components/nav';
 import Loading from '../components/loading';
 import Footer from '../components/footer';
+import More from '../components/more';
 
 const getGlobalState = () => {
   return AdoreStore.getAllData();
@@ -72,11 +73,14 @@ class Main extends React.Component {
     let propObj = this.state;
     const childrenWithProps = React.Children.map(this.props.children,
       (child) => React.cloneElement(child, propObj));
+
+    let moreLink = this.state[currentTab].moreLink;
     return (
       <div onClick={this._onClick}>
         <NavTabs {...this.state}/>
         { isFetching && <Loading/>}
         <div>{childrenWithProps}</div>
+        <More moreLink={moreLink} isFetching={isFetching}/>
         <Footer isFetching={isFetching} />
       </div>
     );

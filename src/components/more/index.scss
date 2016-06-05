@@ -1,0 +1,27 @@
+@import '../../public/stylesheets/index.scss';
+
+:local(.more_box) {
+  position: relative;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  margin: 60px auto;
+  text-align: center;
+  width: 20%;
+  min-width: 4rem;
+  line-height: 3rem;
+  border: 1px solid $blue;
+  animation: moveToTop 1.4s ease;
+  cursor: pointer;
+}
+
+:local(.more_text) {
+  color: $blue;
+  text-decoration: none;
+  font-size: 2rem;
+}
+
+:local(.hidden) {
+  display: none;
+}

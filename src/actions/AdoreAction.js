@@ -3,23 +3,26 @@ import ActionTypes from '../constants/ActionTypes';
 import {flickr} from '../api/config.js';
 
 const homeData = [
-  {imgSrc: 'https://drscdn.500px.org/photo/40815510/q%3D80_m%3D1500/e874404bf253ec0d2a3b24713fc0d25e', title:'hello flux', time: Date.now()},
-
-  {imgSrc: 'https://drscdn.500px.org/photo/129441091/q%3D80_m%3D1500/10c4d24ad472e19bd2ee7fcaf9824f8e', title:'fuck flux', time: Date.now()}
+  {imgSrc: 'https://drscdn.500px.org/photo/40815510/q%3D80_m%3D1500/e874404bf253ec0d2a3b24713fc0d25e', title:'把全部的诗意献给你', time: Date.now()},
 ];
 
 const aboutData = [
-  {content: 'saysomething I giving upon you', time: Date.now()}
+  {
+    title:'迷人的花香是我对你的倾慕',
+    content:[
+      '迷人的花香是我对你的倾慕迷人的花香是我对你的倾慕迷人的花香是我对你的倾慕迷人的花香是我对你的倾慕迷人的花香是我对你的倾慕迷人的花香是我对你的倾慕迷人的花香是我对你的倾慕迷人的花香是我对你的倾慕迷人的花香是我对你的倾慕迷人的花香是我对你的倾慕迷人的花香是我对你的倾慕迷人的花香是我对你的倾慕',
+      '迷人的花香是我对你的倾慕迷人的花香是我对你的倾慕迷人的花香是我对你的倾慕迷人的花香是我对你的倾慕迷人的花香是我对你的倾慕迷人的花香是我对你的倾慕迷人的花香是我对你的倾慕'
+    ],
+    time: Date.now()}
 ];
 
 const AdoreAction = {
-
   getHome(query) {
     AppDispatcher.dispatch({actionType: ActionTypes.REQUEST_HOME});
-    // fetch data by query
-    setTimeout(function(){
+    setTimeout(() => {
       AppDispatcher.dispatch({actionType: ActionTypes.RECEIVE_HOME, data:homeData});
-    }, 200)
+    }, 0);
+
   },
 
   getPhoto(query) {
@@ -46,36 +49,11 @@ const AdoreAction = {
       })
     })
   },
-
-  getStory(query) {
-    AppDispatcher.dispatch({actionType: ActionTypes.REQUEST_STORY});
-        // fetch data by query
-    setTimeout(function(){
-      AppDispatcher.dispatch({actionType: ActionTypes.RECEIVE_STORY, data:photoData[0]});
-    }, 2000)
-  },
-  getMusic(query) {
-    AppDispatcher.dispatch({actionType: ActionTypes.REQUEST_MUSIC});
-        // fetch data by query
-    setTimeout(function(){
-      AppDispatcher.dispatch({actionType: ActionTypes.RECEIVE_MUSIC, data:photoData[0]});
-    }, 2000)
-  },
-
-  getBlog(query) {
-    AppDispatcher.dispatch({actionType: ActionTypes.REQUEST_BLOG});
-        // fetch data by query
-    setTimeout(function(){
-      AppDispatcher.dispatch({actionType: ActionTypes.RECEIVE_BLOG, data:photoData[0]});
-    }, 2000)
-  },
-
   getAbout(query) {
     AppDispatcher.dispatch({actionType: ActionTypes.REQUEST_ABOUT});
-        // fetch data by query\
-    setTimeout(function(){
+    setTimeout(() => {
       AppDispatcher.dispatch({actionType: ActionTypes.RECEIVE_ABOUT, data:aboutData[0]});
-    }, 2000)
+    }, 0);
   },
 
   selectTab(newTab) {

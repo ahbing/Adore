@@ -29,7 +29,7 @@ class Rectangle extends React.Component {
     for(let i = 0, len = this.rectanglesImg.length; i < len; i++){
       let src = rectanglesImg[i].getAttribute('src');
       if (src) continue;
-      if (rectanglesImg[i].offsetParent.offsetTop < hasScrollTop) {
+      if (rectanglesImg[i].offsetParent && rectanglesImg[i].offsetParent.offsetTop < hasScrollTop) {
         let dataSrc = rectanglesImg[i].getAttribute('data-src');
         rectanglesImg[i].setAttribute('src', dataSrc);
         break;

@@ -1,11 +1,20 @@
 @import '../../public/stylesheets/index.scss';
+
 $titleHeight: 60px;
 $minImgHeight: 520px;
 :local(.rectangle) {
   width: 80%;
-  margin: 2px auto;
+  margin:-3px auto;
   position: relative;
-  min-height: $minImgHeight;
+  padding: 0;
+  &:hover {
+    :local(.title) {
+      transform: translateY(0);
+      opacity: 1;
+      z-index: 2;
+    }
+  }
+  animation: moveToTop .6s ease;
 }
 
 :local(.title) {
@@ -13,14 +22,16 @@ $minImgHeight: 520px;
   width: 100%;
   position: absolute;
   left: 0;
-  bottom: 0;
-  background-color: rgba(0, 0, 0, .4);
+  bottom: 3px;
+  background: linear-gradient(to bottom, transparent, #333);
   color: rgb(255, 255, 255);
   line-height: $titleHeight;
   font-size: 1.6rem;
   padding-left: 2rem;
   opacity: 0;
-  transition: all .8 ease;
+  z-index: -1;
+  transform: translateY(40px);
+  transition: all .4s ease;
 }
 
 :local(.img) {

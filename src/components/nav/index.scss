@@ -9,14 +9,15 @@ $fontColor: rgba(255,255,255,1);
   height: $height;
   background: $blue;
   box-shadow: 0 4px 6px rgba(0, 0, 0, .3);
+  z-index: 2333;
 }
 
 :local(.ahbing) {
-  font-size: 2rem;
+  font-size: 1.2rem;
   color: $fontColor;
   text-decoration: none;
   opacity: 0;
-  transition:all .8s ease;
+  transition:all .4s ease;
 }
 
 :local(.topic){
@@ -96,7 +97,7 @@ $fontColor: rgba(255,255,255,1);
 }
 :local(.fix_topic) {
   opacity: 0;
-  transform: translateY(-20px);
+  // transform: translateY(-20px);
 }
 :local(.fix_ahbing) {
   opacity: 1;
